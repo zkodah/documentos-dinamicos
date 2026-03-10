@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "document_schemas",
+  "info": {
+    "singularName": "document-schema",
+    "pluralName": "document-schemas",
+    "displayName": "Document Schema",
+    "description": "Schemas configurables para documentos dinámicos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "nombre_tecnico": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "version": {
+      "type": "string",
+      "default": "1.0"
+    },
+    "categoria": {
+      "type": "string",
+      "required": true
+    },
+    "schema_json": {
+      "type": "json",
+      "required": true
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "icono": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "document_schemas"
+    }
+  }
+}

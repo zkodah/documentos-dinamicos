@@ -1,0 +1,39 @@
+# Entorno
+.env
+.env.local
+.env.*.local
+infra/.env
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Strapi
+backend/.cache/
+backend/build/
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
+
+# Docker volumes (locales)
+postgres_data/
+minio_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/

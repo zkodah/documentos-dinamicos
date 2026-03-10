@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empleados",
+  "info": {
+    "singularName": "empleado",
+    "pluralName": "empleados",
+    "displayName": "Empleado",
+    "description": "Colaboradores/empleados de una empresa"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "identificacion": {
+      "type": "string",
+      "required": true
+    },
+    "nombre_completo": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "cargo": {
+      "type": "string"
+    },
+    "departamento": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": ["activo", "inactivo", "suspendido"],
+      "default": "activo"
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "empleados"
+    },
+    "documentos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::documento.documento",
+      "mappedBy": "empleado"
+    }
+  }
+}

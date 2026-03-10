@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empresas",
+  "info": {
+    "singularName": "empresa",
+    "pluralName": "empresas",
+    "displayName": "Empresa",
+    "description": "Organizaciones multi-tenant que usan el sistema"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "rut": {
+      "type": "string",
+      "unique": true
+    },
+    "razon_social": {
+      "type": "string"
+    },
+    "industria": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "sitio_web": {
+      "type": "string"
+    },
+    "activa": {
+      "type": "boolean",
+      "default": true
+    },
+    "configuracion": {
+      "type": "json"
+    },
+    "empleados": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::empleado.empleado",
+      "mappedBy": "empresa"
+    },
+    "documentos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::documento.documento",
+      "mappedBy": "empresa"
+    },
+    "document_schemas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::document-schema.document-schema",
+      "mappedBy": "empresa"
+    }
+  }
+}

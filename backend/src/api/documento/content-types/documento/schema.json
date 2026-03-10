@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documentos",
+  "info": {
+    "singularName": "documento",
+    "pluralName": "documentos",
+    "displayName": "Documento",
+    "description": "Documentos generados a partir de schemas configurables"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "json",
+      "required": true
+    },
+    "fecha_creacion": {
+      "type": "date"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": ["borrador", "completado", "validado", "rechazado", "archivado"],
+      "default": "borrador"
+    },
+    "document_schema": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::document-schema.document-schema"
+    },
+    "empleado": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empleado.empleado",
+      "inversedBy": "documentos"
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "documentos"
+    },
+    "archivos": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["files", "images"]
+    }
+  }
+}
