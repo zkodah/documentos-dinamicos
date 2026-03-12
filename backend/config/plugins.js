@@ -1,14 +1,16 @@
 module.exports = ({ env }) => ({
   upload: {
     config: {
-      provider: 'strapi-provider-upload-minio',
+      provider: '@strapi/provider-upload-aws-s3',
       providerOptions: {
-        accessKey: env('MINIO_ACCESS_KEY'),
-        secretKey: env('MINIO_SECRET_KEY'),
-        endpoint: env('MINIO_ENDPOINT', 'localhost'),
-        port: env.int('MINIO_PORT', 9000),
-        useSSL: env.bool('MINIO_USE_SSL', false),
-        bucket: env('MINIO_BUCKET', 'documentos-files'),
+        accessKeyId: env('MINIO_ACCESS_KEY'),
+        secretAccessKey: env('MINIO_SECRET_KEY'),
+        endpoint: `http://${env('MINIO_ENDPOINT', 'localhost')}:${env('MINIO_PORT', 9000)}`,
+        s3ForcePathStyle: true,
+        signatureVersion: 'v4',
+        params: {
+          Bucket: env('MINIO_BUCKET', 'documentos-files'),
+        },
       },
       actionOptions: {
         upload: {},

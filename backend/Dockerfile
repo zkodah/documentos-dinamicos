@@ -1,13 +1,11 @@
-FROM node:20-alpine AS base
+FROM node:20-slim
 
-WORKDIR /app
+WORKDIR /srv/app
+
+# Instala dependencias primero (capa cacheada)
 COPY package*.json ./
-RUN npm ci
-
-COPY . .
-
-RUN npm run build
+RUN npm install
 
 EXPOSE 1337
 
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "develop"]

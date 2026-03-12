@@ -17,8 +17,14 @@ frontend/out/
 # Strapi
 backend/.cache/
 backend/build/
+backend/.strapi/
+backend/.strapi-updater.json
+backend/types/
 backend/public/uploads/*
 !backend/public/uploads/.gitkeep
+
+# Claude Code
+.claude/
 
 # Docker volumes (locales)
 postgres_data/
